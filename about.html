@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | De-Zine Cube</title>
+
+ <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+/* Header layout */
+header {
+  background-color: rgba(0, 0, 0, 0.75); /* translucent black */
+  backdrop-filter: blur(12px); /* glossy glass effect */
+  color: rgb(240, 165, 3);
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: 100;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  gap: 10px; /* space between image and text */
+}
+
+/* Image styling */
+.logo-img {
+  width: 40px;          /* adjust size */
+  height: 40px;         /* make it square */
+  border-radius: 50%;   /* makes it circular */
+  object-fit: cover;    /* keeps image cropped nicely */
+}
+
+/* Nav links (desktop) */
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: rgb(240, 165, 3);
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+  background-color: rgba(240, 165, 3, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Hamburger button */
+.menu-toggle {
+  background: none;
+  border: none;
+  justify-items: center;
+  color: rgb(240, 165, 3);
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: none; /* hidden on desktop */
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.85); /* semi-transparent dropdown */
+    backdrop-filter: blur(12px);
+    position: absolute;
+    top: 70px;
+    right: 5px;
+    width: 220px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    padding: 10px 0;
+  }
+
+  .nav-links.show {
+    display: flex;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .nav-links a {
+    padding: 12px 18px;
+    text-align: left;
+    font-size: 1.05rem;
+  }
+
+  .nav-links a:hover {
+    background-color: rgba(240, 165, 3, 0.2);
+    transform: none;
+  }
+}
+
+main {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: rgb(240,165,3);
+      font-size: 1.7rem;
+      align-content: left;
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+    }
+
+/* Fade animation for dropdown */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+</head>
+
+<body>
+
+ <header>
+  <div class="logo">
+    <img src="images/Logo.jpg" alt="De-Zine Cube Logo" class="logo-img">
+    De-Zine Cube
+  </div>
+
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+    ☰
+  </button>
+
+  <nav class="nav-links" id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="explore.html">Explore</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<script>
+  (function () {
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    // Toggle menu on hamburger click
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = navMenu.classList.toggle('show');
+      menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      navMenu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+    });
+
+    // Close the menu when any nav link is clicked (useful for in-page anchors)
+    document.querySelectorAll('#navMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('show');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        navMenu.setAttribute('aria-hidden', 'true');
+      });
+    });
+
+    // Close when clicking/tapping outside
+    window.addEventListener('click', (e) => {
+      if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+        if (navMenu.classList.contains('show')) {
+          navMenu.classList.remove('show');
+          menuToggle.setAttribute('aria-expanded', 'false');
+          navMenu.setAttribute('aria-hidden', 'true');
+        }
+      }
+    });
+
+    // Optional: close on ESC key
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navMenu.classList.contains('show')) {
+        navMenu.classList.remove('show');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        navMenu.setAttribute('aria-hidden', 'true');
+      }
+    });
+  })();
+</script>
+
+  <main>
+  <div class="about-container">
+    <div class="about-image">
+      <img src="images/Logo.jpg" alt="About De-Zine Cube">
+    </div>
+
+    <div class="about-text">
+      <h1>About De-Zine Cube</h1>
+     <p>
+  <strong>De-Zine Cube</strong> is a design and visualization studio specializing in <strong>2D drafting, 3D modeling, structural design, and VR solutions</strong> for the building and construction industry.
+</p>
+<p>
+  Guided by our philosophy — <strong>Perfection through Precision</strong> — we blend creativity with technical expertise to deliver designs that are both functional and visually refined.
+</p>
+<p>
+  At <strong>De-Zine Cube</strong>, we turn ideas into accurate, efficient, and inspiring design solutions.
+</p>
+
+    </div>
+  </div>
+</main>
+
+<style>
+    .about-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.about-image img {
+  width: 380px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.about-text {
+  flex: 1;
+  text-align: left;
+}
+
+.about-text h1 {
+  text-align: left;
+  color: rgb(240,165,3);
+  margin-bottom: 20px;
+}
+
+.about-text p {
+  margin-bottom: 18px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* 📱 Mobile / Tablet view */
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-text {
+    text-align: left;
+    padding: 0 10px;
+  }
+
+  .about-image img {
+    width: 90%;
+    max-width: 400px;
+  }
+}
+
+</style>
+
+<!-- De-Zine Cube - Our Team Section
+-->
+<!-- De-Zine Cube - Our Team Section -->
+<section id="our-team" aria-labelledby="our-team-heading">
+  <h2 id="our-team-heading">Our Team</h2>
+
+  <div class="team-list">
+
+    <article class="member">
+      <img src="images/dheeshith.png" alt="Dheeshith J B — 2D Drafting Specialist" class="avatar">
+      <div class="meta">
+        <h3 class="name">Dheeshith J B</h3>
+        <p class="role">2D Drafting Specialist</p>
+        <p class="bio">Transforms design ideas into precise 2D plans and technical drawings. Ensures every measurement, layout, and detail aligns perfectly with design intent and construction standards.</p>
+      </div>
+    </article>
+
+    <article class="member">
+      <img src="images/nithish.png" alt="Nithish Kannan P C — 3D Visualization Designer" class="avatar">
+      <div class="meta">
+        <h3 class="name">Nithish Kannan P C</h3>
+        <p class="role">3D Visualization Designer</p>
+        <p class="bio">Brings concepts to life through realistic 3D models and renders. Converts floor plans into detailed visuals that help clients see and feel their projects before they’re built.</p>
+      </div>
+    </article>
+
+    <article class="member">
+      <img src= "images/santhosh.png" alt="Santhosh Raj R — Structural Design Engineer" class="avatar">
+      <div class="meta">
+        <h3 class="name">Santhosh Raj R</h3>
+        <p class="role">Structural Design Engineer</p>
+        <p class="bio">Ensures every design stands strong. Balances creativity and safety by analyzing materials, loads, and stability to deliver reliable, well-engineered solutions.</p>
+      </div>
+    </article>
+
+    <article class="member">
+      <img src="images/dharsh.png" alt="Dharshini C — Design Quality Reviewer" class="avatar">
+      <div class="meta">
+        <h3 class="name">Dharshini C</h3>
+        <p class="role">Design Quality Reviewer</p>
+        <p class="bio">Maintains the highest standards across all deliverables. Reviews drawings, models, and renders for accuracy, consistency, and visual appeal before client delivery.</p>
+      </div>
+    </article>
+
+    <article class="member">
+      <img src="images/bharath.png" alt="Bharath G — Project Review Lead" class="avatar">
+      <div class="meta">
+        <h3 class="name">Bharath G</h3>
+        <p class="role">Project Review Lead</p>
+        <p class="bio">Oversees project flow and coordination. Ensures design stages move smoothly from drafting to visualization, maintaining deadlines and design integrity throughout.</p>
+      </div>
+    </article>
+
+    <article class="member">
+      <img src="images/sujan.png" alt="Sujan S K — Virtual Reality Developer" class="avatar">
+      <div class="meta">
+        <h3 class="name">Sujan S K</h3>
+        <p class="role">Virtual Reality Developer</p>
+        <p class="bio">Builds immersive VR environments for interactive walkthroughs. Lets clients explore their spaces virtually and experience the design as if it already exists.</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+
+<style>
+ /* Container */
+#our-team {
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 0 20px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+#our-team h2 {
+  font-size: 36px;
+  margin-bottom: 28px;
+  color: rgb(240,165,3);
+  text-align: left;
+}
+
+/* Team list */
+.team-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px; /* space between each box */
+}
+
+/* Member card */
+.member {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  padding: 22px 24px;
+  background: #dddddd;
+  border-radius: 18px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect for subtle interaction */
+.member:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(240, 165, 3, 0.8);
+}
+
+.avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 999px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 3px solid rgba(240,165,3,0.25);
+}
+
+.meta {
+  flex: 1;
+}
+
+.name {
+  margin: 0 0 4px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #0b1220;
+}
+
+.role {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  color: #4b5563;
+  font-weight: 600;
+}
+
+.bio {
+  margin: 0;
+  font-size: 15px;
+  color: #374151;
+  line-height: 1.5;
+}
+
+/* Responsive: stack on small screens */
+@media (max-width: 768px) {
+  .member {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 22px;
+  }
+  .avatar {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 12px;
+  }
+}
+
+</style>
+
+<!-- ====== Footer: De-Zine Cube ====== -->
+<footer class="site-footer" aria-labelledby="footer-heading">
+  <div class="footer-inner">
+    <div class="brand">
+      <h3 class="brand-title">De-Zine Cube</h3>
+      <p class="brand-sub">Design your Dream Space</p>
+      <p class="brand-sub">De-Zine Cube is a design and visualization studio specializing in 2D drafting, 3D modeling, structural design, and VR solutions for the building and construction industry.</p>
+      <ul class="social" aria-label="Social links">
+  <li>
+   <a href="https://www.instagram.com/dezine_cube?igsh=MW1ka3VkbWU2OTAxMA==" target="_blank" rel="noopener" aria-label="Instagram">
+  <i class="fab fa-instagram"></i>
+</a>
+
+  </li>
+  <li>
+    <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <i class="fab fa-linkedin-in"></i>
+    </a>
+  </li>
+</ul>
+
+<!-- Font Awesome (for icons) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <h4 class="col-title">Services</h4>
+      <ul>
+        <li><a href="2d.html">2D Plans</a></li>
+        <li><a href="3d.html">3D Plans</a></li>
+        <li><a href="front.html">Elevation</a></li>
+        <li><a href="structural.html">Structural</a></li>
+        <li><a href="vr.html">VR Plans</a></li>
+      </ul>
+    </nav>
+
+    <div class="contact-col" aria-label="Contact details">
+      <h4 class="col-title">Contact</h4>
+      <ul class="contact-list">
+        <li><a href="tel:+917010489833">+91 70104 89833</a></li>
+        <li><a href="mailto:dezinecube06@gmail.com">dezinecube06@gmail.com</a></li>
+        <li>Salem, India</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© <span id="current-year"></span> De-Zine Cube — All rights reserved.</p>
+  </div>
+</footer>
+
+<style>
+/* Footer styles - paste into your stylesheet */
+:root { --accent: #f0a503; --bg: #030303; --muted: #9aa4b2; --card: #eec71a; }
+
+.site-footer {
+  background: #000000; /* deep background */
+  color: #e6eef6;
+  padding: 44px 20px 26px;
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto 18px;
+  display: grid;
+  grid-template-columns: 1fr 220px 220px;
+  gap: 28px;
+  align-items: start;
+}
+
+/* Brand column */
+.brand-title {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--accent);
+  letter-spacing: 0.6px;
+}
+.brand-sub {
+  margin: 6px 0 16px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* Social links */
+.social { list-style: none; padding: 0; margin: 0; display: flex; gap: 12px; flex-wrap: wrap; }
+.social a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  background: rgba(255,255,255,0.04);
+  padding: 8px 10px;
+  border-radius: 8px;
+  transition: transform .15s ease, background .15s ease;
+  font-size: 0.9rem;
+}
+.social a:hover { transform: translateY(-3px); background: rgba(240,165,3,0.12); color: #fff; }
+
+/* Nav & contact column */
+.col-title { margin: 0 0 10px; color: #cbd5e1; font-size: 1rem; }
+.footer-nav ul, .contact-list { list-style: none; padding: 0; margin: 0; }
+.footer-nav li, .contact-list li { margin-bottom: 10px; }
+.footer-nav a, .contact-list a {
+  color: #e6eef6;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.footer-nav a:hover, .contact-list a:hover { color: var(--accent); text-decoration: underline; }
+
+/* bottom bar */
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding-top: 14px;
+  text-align: center;
+  color: #9fa9b6;
+  font-size: 0.95rem;
+}
+
+/* Responsive: stack columns on small screens */
+@media (max-width: 880px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    text-align: center;
+  }
+  .footer-nav, .contact-col { display: block; }
+  .social { justify-content: center; }
+}
+.social {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+  padding: 0;
+}
+
+.social a {
+  color: rgb(240,165,3);
+  font-size: 1.6rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social a:hover {
+  color: #fff;
+  transform: scale(1.2);
+}
+
+</style>
+
+<script>
+/* small script to set the current year */
+document.getElementById('current-year').textContent = new Date().getFullYear();
+</script>
+
+
+</body>
+</html>

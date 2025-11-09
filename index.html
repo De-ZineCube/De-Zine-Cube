@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>De-Zine Cube</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+/* Header layout */
+header {
+  background-color: rgba(0, 0, 0, 0.75); /* translucent black */
+  backdrop-filter: blur(12px); /* glossy glass effect */
+  color: rgb(240, 165, 3);
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: 100;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  gap: 10px; /* space between image and text */
+}
+
+/* Image styling */
+.logo-img {
+  width: 40px;          /* adjust size */
+  height: 40px;         /* make it square */
+  border-radius: 50%;   /* makes it circular */
+  object-fit: cover;    /* keeps image cropped nicely */
+}
+
+/* Nav links (desktop) */
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: rgb(240, 165, 3);
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+  background-color: rgba(240, 165, 3, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Hamburger button */
+.menu-toggle {
+  background: none;
+  border: none;
+  justify-items: center;
+  color: rgb(240, 165, 3);
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: none; /* hidden on desktop */
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.85); /* semi-transparent dropdown */
+    backdrop-filter: blur(12px);
+    position: absolute;
+    top: 70px;
+    right: 5px;
+    width: 220px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    padding: 10px 0;
+  }
+
+  .nav-links.show {
+    display: flex;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .nav-links a {
+    padding: 12px 18px;
+    text-align: left;
+    font-size: 1.05rem;
+  }
+
+  .nav-links a:hover {
+    background-color: rgba(240, 165, 3, 0.2);
+    transform: none;
+  }
+}
+
+/* Fade animation for dropdown */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+</head>
+
+<body>
+
+ <header>
+  <div class="logo">
+    <img src="images/Logo.jpg" alt="De-Zine Cube Logo" class="logo-img">
+    De-Zine Cube
+  </div>
+
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+    ☰
+  </button>
+
+  <nav class="nav-links" id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="explore.html">Explore</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<script>
+  (function () {
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    // Toggle menu on hamburger click
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = navMenu.classList.toggle('show');
+      menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      navMenu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+    });
+
+    // Close the menu when any nav link is clicked (useful for in-page anchors)
+    document.querySelectorAll('#navMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('show');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        navMenu.setAttribute('aria-hidden', 'true');
+      });
+    });
+
+    // Close when clicking/tapping outside
+    window.addEventListener('click', (e) => {
+      if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+        if (navMenu.classList.contains('show')) {
+          navMenu.classList.remove('show');
+          menuToggle.setAttribute('aria-expanded', 'false');
+          navMenu.setAttribute('aria-hidden', 'true');
+        }
+      }
+    });
+
+    // Optional: close on ESC key
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navMenu.classList.contains('show')) {
+        navMenu.classList.remove('show');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        navMenu.setAttribute('aria-hidden', 'true');
+      }
+    });
+  })();
+</script>
+
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <!-- Background slides -->
+    <div class="slide active" style="background-image: url('images/1.jpg');"></div>
+<div class="slide" style="background-image: url('images/2.jfif');"></div>
+<div class="slide" style="background-image: url('images/2.jpg');"></div>
+<div class="slide" style="background-image: url('images/4.jpg');"></div>
+<div class="slide" style="background-image: url('images/5.jpg');"></div>
+<div class="slide" style="background-image: url('images/3.jpg');"></div>
+
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+      <h1>De-Zine Cube</h1>
+      <p>Design Your Dream Space</p>
+<a href="explore.html">
+  <button type="button">Explore</button>
+</a>
+    </div>
+  </section>
+
+  <style>
+    /* Hero / Slideshow */
+    .hero {
+      position: relative;
+      height: 90vh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color:rgb(217, 228, 224);
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    /* Overlay for better text visibility */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 90%;
+      padding: 20px;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero button {
+      background-color: rgb(0, 3, 2);
+      color: rgb(240, 165, 3);
+      border: none;
+      font-weight: bold;
+      padding: 12px 25px;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .hero button:hover {
+      background-color: #ffffff;
+    }
+  </style>
+
+  <script>
+    // Show message on button click
+    function showMessage() {
+      alert("Thanks for checking out this demo!");
+    }
+
+    // Slideshow logic
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    const changeInterval = 5000; // 5 seconds
+
+    function nextSlide() {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }
+
+    let slideInterval = setInterval(nextSlide, changeInterval);
+
+    // Swipe functionality
+    let startX = 0;
+    const hero = document.getElementById('hero');
+
+    hero.addEventListener('touchstart', e => {
+      startX = e.touches[0].clientX;
+      clearInterval(slideInterval);
+    });
+
+    hero.addEventListener('touchend', e => {
+      const endX = e.changedTouches[0].clientX;
+      if (endX < startX - 50) nextSlide(); // swipe left
+      if (endX > startX + 50) {
+        slides[current].classList.remove('active');
+        current = (current - 1 + slides.length) % slides.length;
+        slides[current].classList.add('active');
+      }
+      slideInterval = setInterval(nextSlide, changeInterval);
+    });
+  </script>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore | De-Zine Cube</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+  body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    background: #f3f4f6; /* softer neutral background */
+    color: #111827;
+  }
+
+  main {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: rgb(240,165,3); /* brand accent */
+  }
+
+  .explore-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.explore-card {
+  background: linear-gradient(145deg, #ffffff, #f7f7f7);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 320px;
+  flex: 0 1 320px; /* keeps fixed width and allows wrapping */
+}
+
+.explore-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+}
+
+/* Responsive for small screens */
+@media (max-width: 900px) {
+  .explore-card {
+    width: 90%;
+    flex: 0 1 90%;
+  }
+}
+
+  .explore-card {
+    background: linear-gradient(145deg, #ffffff, #f7f7f7);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .explore-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+  }
+
+  .explore-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+
+  .explore-content {
+    padding: 24px 22px;
+  }
+
+  .explore-content h3 {
+    font-size: 1.25rem;
+    margin: 0 0 10px;
+    color: #0f172a;
+  }
+
+  .explore-content p {
+    font-size: 0.95rem;
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .explore-content a {
+    display: inline-block;
+    text-decoration: none;
+    background: #f0a503;
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+
+  .explore-content a:hover {
+    background: #d18f03;
+    transform: translateY(-3px);
+  }
+
+  /* Optional: subtle hover glow on cards */
+  .explore-card:hover .explore-content h3 {
+    color: #f0a503;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    main {
+      margin: 60px auto;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+
+    .explore-content {
+      padding: 18px;
+    }
+  }
+</style>
+
+</head>
+
+<body>
+  <main>
+    <h1>Explore Our Work</h1>
+
+    <div class="explore-grid">
+
+      <!-- 1️⃣ 2D Design -->
+      <div class="explore-card">
+        <img src="our works/2D plan (30'X37') .jpg" alt="2D Design" />
+        <div class="explore-content">
+          <h3>2D Design</h3>
+          <p>Precise and detailed 2D drafting for architectural layouts, plans, and interior concepts that form the foundation of every great design.</p>
+          <a href="2d.html">Explore</a>
+        </div>
+      </div>
+
+      <!-- 2️⃣ 3D Model and Rendering -->
+      <div class="explore-card">
+        <img src="our works/APB RENDER5.jpg" alt="3D Model and Rendering" />
+        <div class="explore-content">
+          <h3>3D Model & Rendering</h3>
+          <p>Realistic 3D modeling and photorealistic rendering to visualize your ideas with clarity and precision before execution.</p>
+          <a href="3d.html">Explore</a>
+        </div>
+      </div>
+
+      <!-- 3️⃣ Front Elevation -->
+      <div class="explore-card">
+        <img src="our works/Office Building.jpg" alt="Front Elevation" />
+        <div class="explore-content">
+          <h3>Front Elevation</h3>
+          <p>Modern and functional front elevation designs that bring visual identity and architectural character to your projects.</p>
+          <a href="front.html">Explore</a>
+        </div>
+      </div>
+
+      <!-- 4️⃣ Structural Design -->
+      <div class="explore-card">
+        <img src="our works/SD-2.jpg" alt="Structural Design" />
+        <div class="explore-content">
+          <h3>Structural Design</h3>
+          <p>Engineering solutions that ensure strength, safety, and sustainability for your buildings and architectural structures.</p>
+          <a href="structural.html">Explore</a>
+        </div>
+      </div>
+
+      <!-- 5️⃣ VR Experience -->
+      <div class="explore-card">
+        <img src="our works/vr.webp" alt="VR Experience" />
+        <div class="explore-content">
+          <h3>VR Experience</h3>
+          <p>Immersive virtual reality environments that let clients explore their projects immersively & interactively before they come to life.</p>
+          <a href="vr.html">Explore</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  
+
+<section id="our-team" aria-labelledby="our-team-heading">
+  <h2 id="our-team-heading">Our Team</h2>
+
+  <div class="team-list">
+    <article class="member">
+      <img src="images/dheeshith.png" alt="Dheeshith J B — 2D Drafting Specialist" class="avatar">
+      <p class="role">2D Drafting Specialist</p>
+    </article>
+
+    <article class="member">
+      <img src="images/nithish.png" alt="Nithish Kannan P C — 3D Visualization Designer" class="avatar">
+      <p class="role">3D Visualization Designer</p>
+    </article>
+
+    <article class="member">
+      <img src="images/santhosh.png" alt="Santhosh Raj R — Structural Design Engineer" class="avatar">
+      <p class="role">Structural Design Engineer</p>
+    </article>
+
+    <article class="member">
+      <img src="images/dharsh.png" alt="Dharshini C — Design Quality Reviewer" class="avatar">
+      <p class="role">Design Quality Reviewer</p>
+    </article>
+
+    <article class="member">
+      <img src="images/bharath.png" alt="Bharath G — Project Review Lead" class="avatar">
+      <p class="role">Project Review Lead</p>
+    </article>
+
+    <article class="member">
+      <img src="images/sujan.png" alt="Sujan S K — Virtual Reality Developer" class="avatar">
+      <p class="role">Virtual Reality Developer</p>
+    </article>
+  </div>
+</section>
+
+<style>
+/* Our Team Section */
+#our-team {
+  background: #505050;
+  color: #fff;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+#our-team h2 {
+  color: rgb(240,165,3);
+  font-size: 2rem;
+  margin-bottom: 50px;
+  letter-spacing: 1px;
+}
+
+/* Team grid layout */
+.team-list {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  gap: 30px;
+  overflow: hidden;
+  max-width: 100%;
+  margin: 0 auto;
+  flex-direction: row;
+}
+
+.member {
+  flex: 1;
+  min-width: 160px;
+  max-width: 180px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 14px;
+  padding: 30px 20px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.member.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 900px) {
+  .team-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .member {
+    width: 85%;
+    max-width: 320px;
+  }
+}
+
+
+.member {
+  background: rgba(255,255,255,0.05);
+  border-radius: 14px;
+  padding: 30px 20px;
+  width: 100%;
+  max-width: 220px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.member.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.member:hover {
+  transform: translateY(-8px);
+  background: rgba(240,165,3,0.1);
+  box-shadow: 0 10px 25px rgba(240,165,3,0.25);
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid rgb(240,165,3);
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.member:hover .avatar {
+  transform: scale(1.05);
+}
+
+.role {
+  font-size: 1rem;
+  color: #f3f3f3;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Responsive - stack vertically on small screens */
+@media (max-width: 768px) {
+  .team-list {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .member {
+    max-width: 300px;
+  }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const members = document.querySelectorAll(".member");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add("visible"), index * 200);
+      } else {
+        entry.target.classList.remove("visible");
+      }
+    });
+  }, { threshold: 0.3 });
+
+  members.forEach(member => observer.observe(member));
+});
+</script>
+
+
+
+<!-- Why Choose Us Section -->
+<section id="why-choose">
+  <h2>Why Choose De-Zine Cube</h2>
+  <div class="why-list">
+    <div class="reason">
+      <h3>💡 Innovative Designs</h3>
+      <p>Our creativity bridges imagination and practicality, ensuring designs that inspire and perform.</p>
+    </div>
+    <div class="reason">
+      <h3>⚙️ Precision & Detail</h3>
+      <p>From 2D layouts to 3D models, every line and texture is carefully crafted for accuracy and quality.</p>
+    </div>
+    <div class="reason">
+      <h3>🤝 Client-Centric Approach</h3>
+      <p>We listen, adapt, and collaborate to turn your vision into reality — smoothly and transparently.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact-cta">
+  <h2>Ready to Design Your Dream?</h2>
+  <p>Let’s bring your ideas to life with creativity, precision, and innovation.</p>
+  <a href="contact.html" class="btn-primary">Let’s Design</a>
+</section>
+
+<style>
+  
+/* Why Choose Us */
+#why-choose {
+  background: #fff;              /* changed to white */
+  color: #111;                   /* dark text */
+  text-align: center;
+  padding: 80px 20px;
+}
+
+#why-choose h2 {
+  color: rgb(240,165,3);
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.why-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.reason {
+  flex: 1 1 250px;
+  background: rgba(0, 0, 0, 0.05);  /* light grey box */
+  border-radius: 12px;
+  padding: 25px;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.reason:hover {
+  background: rgba(240,165,3,0.08); /* soft gold tint on hover */
+  transform: translateY(-5px);
+}
+
+.reason h3 {
+  margin-bottom: 10px;
+  color: rgb(240,165,3);
+}
+
+
+/* Contact CTA */
+#contact-cta {
+  text-align: center;
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 60%, #111 100%);
+  color: #fff;
+}
+
+#contact-cta h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+#contact-cta p {
+  margin-bottom: 25px;
+  color: #ccc;
+}
+
+.btn-primary {
+  background: rgb(240,165,3);
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #fff;
+  color: #000;
+}
+
+</style>
+
+<!-- ====== Footer: De-Zine Cube ====== -->
+<footer class="site-footer" aria-labelledby="footer-heading">
+  <div class="footer-inner">
+    <div class="brand">
+      <h3 class="brand-title">De-Zine Cube</h3>
+      <p class="brand-sub">Design your Dream Space</p>
+      <p class="brand-sub">De-Zine Cube is a design and visualization studio specializing in 2D drafting, 3D modeling, structural design, and VR solutions for the building and construction industry.</p>
+      <ul class="social" aria-label="Social links">
+  <li>
+   <a href="https://www.instagram.com/dezine_cube?igsh=MW1ka3VkbWU2OTAxMA==" target="_blank" rel="noopener" aria-label="Instagram">
+  <i class="fab fa-instagram"></i>
+</a>
+
+  </li>
+  <li>
+    <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <i class="fab fa-linkedin-in"></i>
+    </a>
+  </li>
+</ul>
+
+<!-- Font Awesome (for icons) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <h4 class="col-title">Services</h4>
+      <ul>
+        <li><a href="2d.html">2D Plans</a></li>
+        <li><a href="3d.html">3D Plans</a></li>
+        <li><a href="front.html">Elevation</a></li>
+        <li><a href="structural.html">Structural</a></li>
+        <li><a href="vr.html">VR Plans</a></li>
+      </ul>
+    </nav>
+
+    <div class="contact-col" aria-label="Contact details">
+      <h4 class="col-title">Contact</h4>
+      <ul class="contact-list">
+        <li><a href="tel:+917010489833">+91 70104 89833</a></li>
+        <li><a href="mailto:dezinecube06@gmail.com">dezinecube06@gmail.com</a></li>
+        <li>Salem, India</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© <span id="current-year"></span> De-Zine Cube — All rights reserved.</p>
+  </div>
+</footer>
+
+<style>
+/* Footer styles - paste into your stylesheet */
+:root { --accent: #f0a503; --bg: #030303; --muted: #9aa4b2; --card: #eec71a; }
+
+.site-footer {
+  background: #000000; /* deep background */
+  color: #e6eef6;
+  padding: 44px 20px 26px;
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto 18px;
+  display: grid;
+  grid-template-columns: 1fr 220px 220px;
+  gap: 28px;
+  align-items: start;
+}
+
+/* Brand column */
+.brand-title {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--accent);
+  letter-spacing: 0.6px;
+}
+.brand-sub {
+  margin: 6px 0 16px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* Social links */
+.social { list-style: none; padding: 0; margin: 0; display: flex; gap: 12px; flex-wrap: wrap; }
+.social a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  background: rgba(255,255,255,0.04);
+  padding: 8px 10px;
+  border-radius: 8px;
+  transition: transform .15s ease, background .15s ease;
+  font-size: 0.9rem;
+}
+.social a:hover { transform: translateY(-3px); background: rgba(240,165,3,0.12); color: #fff; }
+
+/* Nav & contact column */
+.col-title { margin: 0 0 10px; color: #cbd5e1; font-size: 1rem; }
+.footer-nav ul, .contact-list { list-style: none; padding: 0; margin: 0; }
+.footer-nav li, .contact-list li { margin-bottom: 10px; }
+.footer-nav a, .contact-list a {
+  color: #e6eef6;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.footer-nav a:hover, .contact-list a:hover { color: var(--accent); text-decoration: underline; }
+
+/* bottom bar */
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding-top: 14px;
+  text-align: center;
+  color: #9fa9b6;
+  font-size: 0.95rem;
+}
+
+/* Responsive: stack columns on small screens */
+@media (max-width: 880px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    text-align: center;
+  }
+  .footer-nav, .contact-col { display: block; }
+  .social { justify-content: center; }
+}
+.social {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+  padding: 0;
+}
+
+.social a {
+  color: rgb(240,165,3);
+  font-size: 1.6rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social a:hover {
+  color: #fff;
+  transform: scale(1.2);
+}
+
+</style>
+
+<script>
+/* small script to set the current year */
+document.getElementById('current-year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

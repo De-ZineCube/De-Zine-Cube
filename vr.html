@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2D Plans & Packages | De-Zine Cube</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* Header layout */
+    header {
+      background-color: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(12px);
+      color: rgb(240, 165, 3);
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+      position: relative;
+      z-index: 100;
+      height: 70px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem;
+      gap: 10px;
+    }
+
+    .logo-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      color: rgb(240, 165, 3);
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      background-color: rgba(240, 165, 3, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .menu-toggle {
+      background: none;
+      border: none;
+      color: rgb(240, 165, 3);
+      font-size: 1.6rem;
+      cursor: pointer;
+      display: none;
+      transition: none;
+    }
+
+    .menu-toggle:hover,
+    .menu-toggle:focus,
+    .menu-toggle:active {
+      color: rgb(240, 165, 3);
+      background: none;
+      outline: none;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(12px);
+        position: absolute;
+        top: 70px;
+        right: 5px;
+        width: 220px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        padding: 10px 0;
+      }
+
+      .nav-links.show {
+        display: flex;
+        animation: fadeIn 0.3s ease-in-out;
+      }
+
+      .nav-links a {
+        padding: 12px 18px;
+        text-align: left;
+        font-size: 1.05rem;
+      }
+
+      .nav-links a:hover {
+        background-color: rgba(240, 165, 3, 0.2);
+        transform: none;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      margin: 60px 20px 40px;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      color: #222;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    /* Pricing Table */
+    .pricing-table {
+      max-width: 1000px;
+      margin: 40px auto;
+      border-collapse: collapse;
+      width: 90%;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .pricing-table th {
+      background-color: #111;
+      color: rgb(240, 165, 3);
+      font-size: 1.1rem;
+      padding: 15px;
+      text-align: left;
+    }
+
+    .pricing-table td {
+      padding: 15px;
+      border-bottom: 1px solid #ddd;
+      color: #333;
+    }
+
+    .pricing-table tr:hover {
+      background-color: #f5f5f5;
+    }
+
+    .note {
+      text-align: center;
+      margin: 40px auto;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .note a {
+      color: rgb(240, 165, 3);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .note a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img src="images/Logo.jpg" alt="De-Zine Cube Logo" class="logo-img">
+      De-Zine Cube
+    </div>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+
+    <nav class="nav-links" id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="explore.html">Explore</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+  <h1>Virtual Reality Experience</h1>
+  <p>Step inside your dream space before it’s built — explore designs interactively through immersive VR visuals.</p>
+</section>
+
+
+  <table class="pricing-table">
+    <thead>
+      <tr>
+        <th>Floor Plan / Package</th>
+        <th>Description</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+  <tr>
+    <td>Basic VR Model (Without Interior)</td>
+    <td>Exterior-only VR view of your 3D building with navigation support — optimized for mobile preview.</td>
+    <td>₹4,999</td>
+  </tr>
+
+  <tr>
+    <td>Basic VR with Interior Layout</td>
+    <td>Interactive VR showing both exterior and unfurnished interior spaces — walk-through enabled on mobile.</td>
+    <td>₹6,999</td>
+  </tr>
+
+  <tr>
+    <td>Furnished VR Model</td>
+    <td>Full VR model with furniture, textures, lighting & material realism — ideal for residential walkthroughs.</td>
+    <td>₹9,999</td>
+  </tr>
+
+  <tr>
+    <td>Rendered VR with Day/Night Mode</td>
+    <td>Photorealistic VR render with real-time lighting variation between day and night scenes.</td>
+    <td>₹12,999</td>
+  </tr>
+
+  <tr>
+    <td>VR + Front Elevation Combo</td>
+    <td>Includes both VR model and rendered front elevation design — complete presentation package for clients.</td>
+    <td>₹14,999</td>
+  </tr>
+
+  <tr>
+    <td>VR Walkthrough Video</td>
+    <td>Rendered fly-through or interior walk-through video of your 3D project — ready for sharing or marketing.</td>
+    <td>₹15,999</td>
+  </tr>
+
+  <tr>
+    <td>Immersive VR Experience (Mobile + VR Goggles)</td>
+    <td>360° interactive walkthrough compatible with mobile and VR goggles — fully furnished and light adaptive.</td>
+    <td>₹18,999</td>
+  </tr>
+
+  <tr>
+    <td>Premium Interactive VR Suite</td>
+    <td>Full-scale experience with interactive lighting, materials, and environment controls — includes elevation, interior, and rendered finish.</td>
+    <td>₹24,999</td>
+  </tr>
+
+  <tr>
+    <td>Industrial / Commercial VR Presentation</td>
+    <td>VR experience tailored for commercial or industrial spaces with functional walk-paths and realistic scale models.</td>
+    <td>As per Requirement</td>
+  </tr>
+
+  <tr>
+    <td>Custom VR Package</td>
+    <td>Choose between exterior-only, interior-focused, or full interactive VR — designed specifically for your project.</td>
+    <td>Based on Requirement</td>
+  </tr>
+</tbody>
+
+  </table>
+
+  <div class="note">
+    Need something specific? <a href="contact.html">Contact us</a> for a custom quote or special combo offer!
+  </div>
+
+  <script>
+    // Hamburger toggle
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.getElementById('navMenu').classList.toggle('show');
+    });
+  </script>
+</body>
+</html>

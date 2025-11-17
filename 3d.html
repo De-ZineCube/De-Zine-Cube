@@ -141,50 +141,49 @@
       color: #555;
     }
 
-    /* Pricing Table */
+  /* Responsive Pricing Table */
 .pricing-table {
   width: 100%;
   max-width: 100%;
   border-collapse: collapse;
   background: #fff;
   border-radius: 12px;
-  box-sizing: border-box; /* Prevents additional padding from affecting width */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  table-layout: fixed; /* Important for equal-width columns */
 }
 
 .pricing-table th {
   background-color: #111;
   color: rgb(240, 165, 3);
-  font-size: 1.1rem;
-  padding: 15px;
+  font-size: 1rem;
+  padding: 12px;
   text-align: left;
+  white-space: normal; /* Allow wrapping */
+  word-wrap: break-word; /* Ensure long words break */
 }
 
 .pricing-table td {
-  padding: 15px;
+  padding: 12px;
   border-bottom: 1px solid #ddd;
   color: #333;
+  white-space: normal; /* Allow wrapping */
+  word-wrap: break-word; /* Ensure long content breaks into lines */
 }
 
-/* Container to allow scrolling when necessary */
-.table-container {
-  width: 100%;
-  overflow-x: auto;
-}
+/* Fully responsive behavior for screens under 600px */
+@media (max-width: 600px) {
+  .pricing-table th {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
 
-/* Responsive tweaks */
-@media (max-width: 768px) {
-  .pricing-table th,
   .pricing-table td {
-    padding: 8px;
     font-size: 0.85rem;
-  }
-
-  .pricing-table {
-    font-size: 0.85rem;
+    padding: 10px;
   }
 }
+
 
     .note {
       text-align: center;

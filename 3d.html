@@ -3,7 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2D Plans & Packages | De-Zine Cube</title>
+  <title>3D Floor Plans & Visualization | De-Zine Cube</title>
+
+  <meta name="description" content="Bring your ideas to life with detailed 3D layouts, realistic renders, and immersive visual experiences.">
+<meta name="keywords" content="2D floor plans, 3D floor plans, elevation design, VR walkthrough, architectural drafting, De-Zine Cube, Salem, India">
+<meta name="author" content="De-Zine Cube">
+<link rel="canonical" href="https://de-zinecube.github.io/De-Zine-Cube/3d.html">
+
+<!-- Open Graph / Social -->
+<meta property="og:title" content="3D Floor Plans & Visualization — De-Zine Cube">
+<meta property="og:description" content="Design Your Dream Space.">
+<meta property="og:image" content="https://de-zinecube.github.io/De-Zine-Cube/images/logo.jpg">
+<meta property="og:url" content="https://de-zinecube.github.io/De-Zine-Cube/3d.html">
+<meta property="og:type" content="website">
+
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
 
@@ -141,49 +154,35 @@
       color: #555;
     }
 
-  /* Responsive Pricing Table */
-.pricing-table {
-  width: 100%;
-  max-width: 100%;
-  border-collapse: collapse;
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  table-layout: fixed; /* Important for equal-width columns */
-}
+    /* Pricing Table */
+    .pricing-table {
+      max-width: 1000px;
+      margin: 40px auto;
+      border-collapse: collapse;
+      width: 90%;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
 
-.pricing-table th {
-  background-color: #111;
-  color: rgb(240, 165, 3);
-  font-size: 1rem;
-  padding: 12px;
-  text-align: left;
-  white-space: normal; /* Allow wrapping */
-  word-wrap: break-word; /* Ensure long words break */
-}
+    .pricing-table th {
+      background-color: #111;
+      color: rgb(240, 165, 3);
+      font-size: 1.1rem;
+      padding: 15px;
+      text-align: left;
+    }
 
-.pricing-table td {
-  padding: 12px;
-  border-bottom: 1px solid #ddd;
-  color: #333;
-  white-space: normal; /* Allow wrapping */
-  word-wrap: break-word; /* Ensure long content breaks into lines */
-}
+    .pricing-table td {
+      padding: 15px;
+      border-bottom: 1px solid #ddd;
+      color: #333;
+    }
 
-/* Fully responsive behavior for screens under 600px */
-@media (max-width: 600px) {
-  .pricing-table th {
-    font-size: 0.9rem;
-    padding: 10px;
-  }
-
-  .pricing-table td {
-    font-size: 0.85rem;
-    padding: 10px;
-  }
-}
-
+    .pricing-table tr:hover {
+      background-color: #f5f5f5;
+    }
 
     .note {
       text-align: center;
@@ -201,6 +200,48 @@
     .note a:hover {
       text-decoration: underline;
     }
+
+    /* Adjust column widths */
+.pricing-table th:nth-child(1),
+.pricing-table td:nth-child(1) {
+  width: 40%; /* Floor Plan / Package remains comfortable */
+}
+
+.pricing-table th:nth-child(2),
+.pricing-table td:nth-child(2) {
+  width: 45%; /* Description column stays elongated */
+}
+
+.pricing-table th:nth-child(3),
+.pricing-table td:nth-child(3) {
+  width: 15%; /* Price column slightly smaller */
+  text-align: center; /* center the price content */
+}
+
+/* Center table headers */
+.pricing-table th {
+  text-align: center;
+}
+
+/* Mobile responsive tweaks */
+@media (max-width: 600px) {
+  .pricing-table {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+  .pricing-table th, .pricing-table td {
+    padding: 10px 8px;
+    word-wrap: break-word;
+  }
+  .pricing-table th:nth-child(3),
+  .pricing-table td:nth-child(3) {
+    text-align: center; /* keep price centered on mobile */
+  }
+  .pricing-table th {
+    text-align: center; /* headers remain centered on mobile */
+  }
+}
+
   </style>
 </head>
 

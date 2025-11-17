@@ -200,6 +200,26 @@
     .note a:hover {
       text-decoration: underline;
     }
+    /* Responsive wrapper for table */
+.table-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Adjust table appearance on smaller devices */
+@media (max-width: 768px) {
+  .pricing-table th,
+  .pricing-table td {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .pricing-table {
+    font-size: 0.85rem;
+    min-width: 600px; /* This ensures scrolling happens instead of squeezing too much */
+  }
+}
+
   </style>
 </head>
 
@@ -225,7 +245,7 @@
   <p>Bring your ideas to life with detailed 3D layouts, realistic renders, and immersive visual experiences.</p>
 </section>
 
-
+<div class="table-container">
   <table class="pricing-table">
     <thead>
       <tr>
@@ -293,7 +313,7 @@
 </tbody>
 
   </table>
-
+</div>
   <div class="note">
     Need something specific? <a href="contact.html">Contact us</a> for a custom quote or special combo offer!
   </div>

@@ -200,6 +200,50 @@
       text-decoration: underline;
     }
   </style>
+
+  <style>
+/* Adjust column widths */
+.pricing-table th:nth-child(1),
+.pricing-table td:nth-child(1) {
+  width: 30%; /* Floor Plan / Package comfortable */
+}
+
+.pricing-table th:nth-child(2),
+.pricing-table td:nth-child(2) {
+  width: 55%; /* Description stays wide */
+}
+
+.pricing-table th:nth-child(3),
+.pricing-table td:nth-child(3) {
+  width: 15%; /* Price narrower */
+  text-align: center; /* center the price */
+}
+
+/* Center table headers (titles) only */
+.pricing-table th {
+  text-align: center;
+}
+
+/* Mobile responsive tweaks */
+@media (max-width: 600px) {
+  .pricing-table {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+  .pricing-table th, .pricing-table td {
+    padding: 10px 8px;
+    word-wrap: break-word;
+  }
+  .pricing-table th:nth-child(3),
+  .pricing-table td:nth-child(3) {
+    text-align: center; /* keep price centered on mobile too */
+  }
+  .pricing-table th {
+    text-align: center; /* headers remain centered on mobile */
+  }
+}
+</style>
+
 </head>
 
 <body>

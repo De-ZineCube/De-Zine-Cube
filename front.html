@@ -148,7 +148,6 @@
   border-collapse: collapse;
   background: #fff;
   border-radius: 12px;
-  overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   table-layout: fixed; /* Important for equal-width columns */
 }
@@ -201,6 +200,53 @@
     .note a:hover {
       text-decoration: underline;
     }
+    /* Wrapper to enforce responsiveness */
+.table-wrapper {
+  width: 100%;
+  overflow: hidden; /* Prevents scroll bars */
+  padding: 0 8px; /* Prevents content from touching screen edges */
+}
+
+/* Override responsive table */
+.pricing-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* Makes every column equal and responsive */
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure cells wrap beautifully */
+.pricing-table th,
+.pricing-table td {
+  padding: 12px;
+  text-align: left;
+  word-wrap: break-word;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+/* Make text slightly smaller and better distributed on mobile */
+@media (max-width: 600px) {
+  .pricing-table th {
+    font-size: 0.9rem;
+  }
+
+  .pricing-table td {
+    font-size: 0.85rem;
+  }
+
+  /* Stack description & price under title if needed (optional) */
+  /* You can comment this out if not needed */
+  .pricing-table th:nth-child(2),
+  .pricing-table td:nth-child(2),
+  .pricing-table th:nth-child(3),
+  .pricing-table td:nth-child(3) {
+    display: table-cell;
+  }
+}
+
   </style>
 </head>
 
@@ -226,7 +272,7 @@
   <p>Discover striking elevation styles that define your building’s identity — from modern to traditional facades.</p>
 </section>
 
-
+<div class="table-wrapper">
   <table class="pricing-table">
     <thead>
       <tr>
@@ -275,7 +321,7 @@
 </tbody>
 
   </table>
-
+</div>
   <div class="note">
     Need something specific? <a href="contact.html">Contact us</a> for a custom quote or special combo offer!
   </div>

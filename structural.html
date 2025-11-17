@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -141,35 +141,84 @@
       color: #555;
     }
 
-    /* Pricing Table */
-    .pricing-table {
-      max-width: 1000px;
-      margin: 40px auto;
-      border-collapse: collapse;
-      width: 90%;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-    }
+   /* Structural Packages Table - Same as 2D/3D curved table */
+.pricing-table {
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto;      /* Center table */
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 12px;    /* Curved edges */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  overflow: hidden;       /* Ensures border-radius works */
+  table-layout: fixed;     /* Fixed layout for consistent columns */
+}
 
-    .pricing-table th {
-      background-color: #111;
-      color: rgb(240, 165, 3);
-      font-size: 1.1rem;
-      padding: 15px;
-      text-align: left;
-    }
+.pricing-table th:nth-child(1),
+.pricing-table td:nth-child(1) {
+  width: 30%;              /* Floor Plan / Package column */
+}
 
-    .pricing-table td {
-      padding: 15px;
-      border-bottom: 1px solid #ddd;
-      color: #333;
-    }
+.pricing-table th:nth-child(2),
+.pricing-table td:nth-child(2) {
+  width: 55%;              /* Description column */
+}
 
-    .pricing-table tr:hover {
-      background-color: #f5f5f5;
-    }
+.pricing-table th:nth-child(3),
+.pricing-table td:nth-child(3) {
+  width: 15%;              /* Price column */
+  text-align: center;
+  word-wrap: break-word;   /* Long content wraps inside */
+}
+
+.pricing-table th {
+  text-align: center;       /* Center header titles */
+  background-color: #111;
+  color: rgb(240, 165, 3);
+  font-size: 1rem;
+  padding: 12px;
+}
+
+.pricing-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  color: #333;
+  word-wrap: break-word;
+}
+
+.pricing-table tr:hover {
+  background-color: #f5f5f5;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .pricing-table {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+  .pricing-table th, .pricing-table td {
+    padding: 10px 8px;
+    word-wrap: break-word;
+  }
+
+  .pricing-table th:nth-child(1),
+  .pricing-table td:nth-child(1) {
+    width: 30%;       /* Floor Plan / Package */
+  }
+
+  .pricing-table th:nth-child(2),
+  .pricing-table td:nth-child(2) {
+    width: 50%;       /* Description */
+  }
+
+  .pricing-table th:nth-child(3),
+  .pricing-table td:nth-child(3) {
+    width: 20%;       /* Price column widened for mobile */
+    text-align: center;
+    white-space: normal;
+  }
+}
+
 
     .note {
       text-align: center;
@@ -225,37 +274,37 @@
   <tr>
     <td>Basic Structural Drawing (Residential – Up to G+2)</td>
     <td>Beam, column, and footing layout prepared from 2D plan — includes load distribution check.</td>
-    <td>₹1/sq.ft.</td>
+    <td>₹1,499</td>
   </tr>
   <tr>
     <td>Basic Structural Drawing (Commercial/Industrial)</td>
     <td>Structural drawing prepared from 2D layout considering higher load & span factors.</td>
-    <td>₹2.5/sq.ft.</td>
+    <td>₹2,499</td>
   </tr>
   <tr>
     <td>Structural 3D Model Visualization</td>
     <td>3D visualization showing beam, column, and slab arrangement over your 2D plan — useful for understanding design intent.</td>
-    <td>₹999</td>
+    <td>₹3,499</td>
   </tr>
   <tr>
     <td>Beam & Column Detail Set</td>
     <td>Includes reinforcement detailing, bar schedule, and member specifications for RCC work.</td>
-    <td>₹1,199</td>
+    <td>₹2,999</td>
   </tr>
   <tr>
     <td>Full Structural Report Package</td>
     <td>Includes calculation report, design assumptions, load table, and failure analysis summary for approval/documentation.</td>
-    <td>₹1,999</td>
+    <td>₹4,499</td>
   </tr>
   <tr>
     <td>Structural Safety & Load Check</td>
     <td>Independent verification of an existing structure’s safety, deflection, and strength.</td>
-    <td>₹1,499</td>
+    <td>₹3,999</td>
   </tr>
   <tr>
     <td>Premium Structural Package (All-In-One)</td>
     <td>Includes structural drawings, 3D visualization, detailed report, and failure analysis — suitable for any project type.</td>
-    <td>₹2,499</td>
+    <td>₹6,499</td>
   </tr>
   <tr>
     <td>Customized Structural Package</td>

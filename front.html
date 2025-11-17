@@ -259,6 +259,80 @@
 }
 
   </style>
+
+   <style>
+/* Table styling with centered desktop layout */
+.pricing-table {
+  width: 90%;           /* responsive width */
+  max-width: 1000px;    /* limit table width on large screens */
+  margin: 40px auto;    /* center table */
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  table-layout: fixed;  /* enforce column widths */
+}
+
+.pricing-table th:nth-child(1),
+.pricing-table td:nth-child(1) {
+  width: 28%; /* Floor Plan / Package */
+}
+
+.pricing-table th:nth-child(2),
+.pricing-table td:nth-child(2) {
+  width: 57%; /* Description */
+}
+
+.pricing-table th:nth-child(3),
+.pricing-table td:nth-child(3) {
+  width: 15%; /* Price */
+  text-align: center;  
+  /* allow long text like "As per Requirement" to wrap */
+  white-space: normal; 
+  word-wrap: break-word; 
+}
+
+.pricing-table th {
+  text-align: center;  /* center header titles */
+  background-color: #111;
+  color: rgb(240, 165, 3);
+  font-size: 1rem;
+  padding: 12px;
+}
+
+.pricing-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  color: #333;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .pricing-table {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+  .pricing-table th, .pricing-table td {
+    padding: 10px 8px;
+  }
+  .pricing-table th:nth-child(3),
+  .pricing-table td:nth-child(3) {
+    width: 25%;        /* give more room to price on mobile */
+    text-align: center;
+    white-space: normal; /* allow wrapping if text is too long */
+  }
+  .pricing-table th:nth-child(1),
+  .pricing-table td:nth-child(1) {
+    width: 30%;       /* first column */
+  }
+  .pricing-table th:nth-child(2),
+  .pricing-table td:nth-child(2) {
+    width: 45%;       /* description column */
+  }
+}
+</style>
 </head>
 
 <body>

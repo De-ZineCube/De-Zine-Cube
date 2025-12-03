@@ -304,165 +304,125 @@ main {
 
 </style>
 
-<!-- De-Zine Cube - Our Team Section
--->
-<!-- De-Zine Cube - Our Team Section -->
-<section id="our-team" aria-labelledby="our-team-heading">
-  <h2 id="our-team-heading">Our Team</h2>
+<!-- Mission, Vision & Terms Section -->
+<section id="mv-section">
 
-  <div class="team-list">
+  <h2 class="section-title">Our Mission & Vision</h2>
 
-    <article class="member">
-      <img src="images/dheeshith.png" alt="Dheeshith J B — 2D Drafting Specialist" class="avatar">
-      <div class="meta">
-        <h3 class="name">Dheeshith J B</h3>
-        <p class="role">2D Drafting Specialist</p>
-        <p class="bio">Transforms design ideas into precise 2D plans and technical drawings. Ensures every measurement, layout, and detail aligns perfectly with design intent and construction standards.</p>
-      </div>
-    </article>
-
-    <article class="member">
-      <img src="images/nithish.png" alt="Nithish Kannan P C — 3D Visualization Designer" class="avatar">
-      <div class="meta">
-        <h3 class="name">Nithish Kannan P C</h3>
-        <p class="role">3D Visualization Designer</p>
-        <p class="bio">Brings concepts to life through realistic 3D models and renders. Converts floor plans into detailed visuals that help clients see and feel their projects before they’re built.</p>
-      </div>
-    </article>
-
-    <article class="member">
-      <img src= "images/santhosh.png" alt="Santhosh Raj R — Structural Design Engineer" class="avatar">
-      <div class="meta">
-        <h3 class="name">Santhosh Raj R</h3>
-        <p class="role">Structural Design Engineer</p>
-        <p class="bio">Ensures every design stands strong. Balances creativity and safety by analyzing materials, loads, and stability to deliver reliable, well-engineered solutions.</p>
-      </div>
-    </article>
-
-    <article class="member">
-      <img src="images/dharsh.png" alt="Dharshini C — Design Quality Reviewer" class="avatar">
-      <div class="meta">
-        <h3 class="name">Dharshini C</h3>
-        <p class="role">Design Quality Reviewer</p>
-        <p class="bio">Maintains the highest standards across all deliverables. Reviews drawings, models, and renders for accuracy, consistency, and visual appeal before client delivery.</p>
-      </div>
-    </article>
-
-    <article class="member">
-      <img src="images/bharath.png" alt="Bharath G — Project Review Lead" class="avatar">
-      <div class="meta">
-        <h3 class="name">Bharath G</h3>
-        <p class="role">Project Review Lead</p>
-        <p class="bio">Oversees project flow and coordination. Ensures design stages move smoothly from drafting to visualization, maintaining deadlines and design integrity throughout.</p>
-      </div>
-    </article>
-
-    <article class="member">
-      <img src="images/sujan.png" alt="Sujan S K — Virtual Reality Developer" class="avatar">
-      <div class="meta">
-        <h3 class="name">Sujan S K</h3>
-        <p class="role">Virtual Reality Developer</p>
-        <p class="bio">Builds immersive VR environments for interactive walkthroughs. Lets clients explore their spaces virtually and experience the design as if it already exists.</p>
-      </div>
-    </article>
-
+  <div class="mv-box">
+    <h3 class="mv-heading">Our Vision</h3>
+    <p class="mv-text">
+      To make architectural planning, 3D visualization, and immersive design technologies accessible to everyone—
+      from homeowners to small builders—by combining cost-efficient solutions with high creative excellence. 
+      We aim to bring professional design quality to everyday people while promoting clarity, trust, 
+      and transparency in the design process.
+    </p>
   </div>
+
+  <div class="mv-box">
+    <h3 class="mv-heading">Our Mission</h3>
+    <p class="mv-text">
+      Our mission is to simplify the journey from concept to construction by delivering accurate plans, 
+      clear visuals, and reliable design support. We focus on affordability, efficiency, and client-centric 
+      workflows—ensuring every person, regardless of project scale, receives high-value architectural solutions. 
+      We continuously improve our tools, quality, and communication to serve clients better.
+    </p>
+  </div>
+
+  <!-- Unique Terms & Conditions -->
+  <h2 class="section-title terms-heading">Terms & Conditions</h2>
+
+  <div class="terms-box">
+    <p class="terms-text"><strong>1. Service Scope:</strong> All drawings, 3D visuals, elevations, and VR outputs provided are based on client inputs and requirements. Any changes after delivery may incur additional charges.</p>
+
+    <p class="terms-text"><strong>2. Delivery Time:</strong> Deadlines are estimated based on workload and project complexity. Delays may occur if client inputs are incomplete or changed midway.</p>
+
+    <p class="terms-text"><strong>3. Usage Rights:</strong> All files delivered are intended for personal or project use. Reselling, redistribution, or commercial reuse is not allowed without permission.</p>
+
+    <p class="terms-text"><strong>4. Payment & Refunds:</strong> Payments for digital design services are non-refundable once work has begun. Partial refunds are not applicable after file delivery.</p>
+
+    <p class="terms-text"><strong>5. Data Privacy:</strong> All information shared by clients (plans, photos, location, details) is kept confidential and used only for project purposes.</p>
+
+    <p class="terms-text"><strong>6. Revisions:</strong> Every service includes a limited number of revisions. Additional changes outside the agreed scope may be charged separately.</p>
+
+    <p class="terms-text"><strong>7. Ownership:</strong> The design methodology, templates, and workflow remain the property of De-Zine Cube. Only the final delivered files belong to the client.</p>
+  </div>
+
 </section>
 
-
 <style>
- /* Container */
-#our-team {
+/* Section wrapper */
+#mv-section {
   max-width: 1100px;
   margin: 60px auto;
   padding: 0 20px;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-family: system-ui, sans-serif;
 }
 
-#our-team h2 {
-  font-size: 36px;
-  margin-bottom: 28px;
+/* Main heading */
+.section-title {
+  font-size: 40px;
+  font-weight: 700;
   color: rgb(240,165,3);
+  margin-bottom: 30px;
   text-align: left;
 }
 
-/* Team list */
-.team-list {
-  display: flex;
-  flex-direction: column;
-  gap: 28px; /* space between each box */
+/* Mission / Vision container box */
+.mv-box {
+  background: #f8f8f8;
+  padding: 28px;
+  margin-bottom: 30px;
+  border-radius: 16px;
+  border-left: 6px solid rgb(240,165,3);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
 }
 
-/* Member card */
-.member {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
-  padding: 22px 24px;
-  background: #dddddd;
-  border-radius: 18px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
-  box-sizing: border-box;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* Hover effect for subtle interaction */
-.member:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 18px rgba(240, 165, 3, 0.8);
-}
-
-.avatar {
-  width: 110px;
-  height: 110px;
-  border-radius: 999px;
-  object-fit: cover;
-  flex-shrink: 0;
-  border: 3px solid rgba(240,165,3,0.25);
-}
-
-.meta {
-  flex: 1;
-}
-
-.name {
-  margin: 0 0 4px 0;
-  font-size: 20px;
-  font-weight: 600;
+/* Subheadings */
+.mv-heading {
+  font-size: 28px;
+  font-weight: 700;
   color: #0b1220;
+  margin-bottom: 12px;
 }
 
-.role {
-  margin: 0 0 8px 0;
-  font-size: 14px;
-  color: #4b5563;
-  font-weight: 600;
+/* Text content */
+.mv-text {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #333;
 }
 
-.bio {
-  margin: 0;
-  font-size: 15px;
-  color: #374151;
-  line-height: 1.5;
+/* Terms heading spaced separately */
+.terms-heading {
+  margin-top: 50px;
 }
 
-/* Responsive: stack on small screens */
+/* Unique Terms styling */
+.terms-box {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  border: 2px dashed rgb(240,165,3);
+  box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+}
+
+.terms-text {
+  font-size: 17px;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  color: #222;
+}
+
+/* Mobile responsive */
 @media (max-width: 768px) {
-  .member {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 22px;
-  }
-  .avatar {
-    width: 120px;
-    height: 120px;
-    margin-bottom: 12px;
-  }
+  .section-title { font-size: 32px; }
+  .mv-heading { font-size: 24px; }
+  .mv-text, .terms-text { font-size: 16px; }
+  .mv-box, .terms-box { padding: 22px; }
 }
-
 </style>
+
 
 <!-- ====== Footer: De-Zine Cube ====== -->
 <footer class="site-footer" aria-labelledby="footer-heading">
@@ -621,8 +581,5 @@ main {
 document.getElementById('current-year').textContent = new Date().getFullYear();
 </script>
 
-
 </body>
 </html>
-
-
